@@ -1,14 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import cool1 from "../../assets/cool-bg/cool1.png";
-
-const courses = [
-  {
-    id: "os",
-    name: "Operating Systems_B_Even_24-25",
-    image: cool1,
-  },
-];
+import { courses } from "../../data/courses"; // ✅ import centralized course list
 
 const AllCourses = () => {
   const navigate = useNavigate();
@@ -24,7 +16,7 @@ const AllCourses = () => {
           <Card
             key={course.id}
             className="cursor-pointer border border-gray-200 bg-white rounded-lg shadow-sm hover:shadow-lg transition-transform duration-200 ease-in-out transform hover:scale-[1.02]"
-            onClick={() => navigate('/student/courses/details')}
+            onClick={() => navigate(`/student/courses/details/${course.id}`)} // ✅ route includes course ID
           >
             <img
               src={course.image}
